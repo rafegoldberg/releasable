@@ -1,4 +1,13 @@
 Changelog
+===
+
+## Version 1.1.1
+
+### 🛠 Fixes & Updates
+
+* **changelog:** title to H1 ([41f75e4](https://github.com/rafegoldberg/releasable/commit/41f75e44a99e2123c19de5fa8af59cd58eca0295))
+
+Changelog
 
 ## Version 1.1.0
 
