@@ -1,0 +1,22 @@
+name: Release
+on: push
+
+jobs:
+  Release:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [12.x]
+    steps:
+      - run: echo $GITHUB_WORKSPACE
+      # - name: Checkout branch.
+      #   uses: actions/checkout@master
+      # - name: Setup git.
+      #   run: |
+      #     git config user.name "Action"
+      #     git config user.email "rafegoldberg@gmail.com"
+      # - name: Setup node. (v${{ matrix.node-version }})
+      #   uses: actions/setup-node@v1
+      #   with:
+      #     node-version: ${{ matrix.node-version }}
