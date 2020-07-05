@@ -1,10 +1,9 @@
 name: Release
-
 on:
   push:
-    branches:
-      - master
-      - next
+    branches: master
+  pull_request:
+    branches: next
 
 jobs:
   Release:
