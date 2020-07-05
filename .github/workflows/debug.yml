@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Echo current branch.
         run: echo $head
-        with:
+        env:
           head: ${{ github.head_ref }}
       # - name: Checkout branch.
       #   uses: actions/checkout@master
