@@ -9,13 +9,18 @@ jobs:
       matrix:
         node-version: [12.x]
     steps:
-      - run: echo $GITHUB_WORKSPACE
-      # - name: Checkout branch.
-      #   uses: actions/checkout@master
-      # - name: Setup git.
-      #   run: |
-      #     git config user.name "Action"
-      #     git config user.email "rafegoldberg@gmail.com"
+      - name: Echo current branch. (1)
+        run: echo $BRANCH
+        env:
+          BRANCH: ${{ github.head_ref }}
+      - name: Checkout branch.
+        uses: actions/checkout@master
+      - name: Configure git.
+        run: |
+          git config user.name "Action"
+          git config user.email "rafegoldberg@gmail.com"
+      - name: Echo current branch. (2)
+        run: echo ${{ github.head_ref }}
       # - name: Setup node. (v${{ matrix.node-version }})
       #   uses: actions/setup-node@v1
       #   with:
