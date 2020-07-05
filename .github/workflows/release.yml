@@ -39,10 +39,11 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }} # publish to GitHub remote
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}   # release to NPM registry
-      - name: Push
+      - name: Sync Release
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.head_ref }}
         continue-on-error: true
       - name: Archive UMD Bundle
         uses: actions/upload-artifact@v1
