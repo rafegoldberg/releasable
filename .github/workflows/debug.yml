@@ -1,8 +1,8 @@
-name: Release
+name: Debug
 on: push
 
 jobs:
-  Release:
+  Debug:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
