@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Setup git.
         uses: actions/checkout@master
-        run: /
+      - run: /
           git config user.name "Action"
           git config user.email "rafegoldberg@gmail.com"
       - name: Setup node. (v${{ matrix.node-version }})
