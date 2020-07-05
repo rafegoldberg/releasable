@@ -9,7 +9,10 @@ jobs:
       matrix:
         node-version: [12.x]
     steps:
-      - run: echo $GITHUB_WORKSPACE
+      - name: Echo current branch.
+        run: echo $head
+        with:
+          head: ${{ github.head_ref }}
       # - name: Checkout branch.
       #   uses: actions/checkout@master
       # - name: Setup git.
