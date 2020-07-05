@@ -1,11 +1,5 @@
 module.exports = {
-  branches: [
-    "master",
-    {
-      name: "next",
-      prerelease: true,
-    },
-  ],
+  branches: ["master", { name: "next", prerelease: true }],
   plugins: [
     [
       "@semantic-release/commit-analyzer",
@@ -26,27 +20,30 @@ module.exports = {
       "@semantic-release/release-notes-generator",
       {
         preset: "conventionalcommits",
+        presetConfig: {
+          types: [
+            { type: "feat", section: "✨ New & Improved", hidden: false },
+            { type: "refactor", section: "✨ New & Improved", hidden: true },
+
+            { type: "style", section: "💄 Style Refinements", hidden: false },
+
+            { type: "fix", section: "🛠 Fixes & Updates", hidden: false },
+            { type: "perf", section: "🛠 Fixes & Updates", hidden: false },
+            { type: "chore", section: "🛠 Fixes & Updates", hidden: true },
+            { type: "test", section: "🛠 Fixes & Updates", hidden: true },
+
+            { type: "docs", section: "📘 Docs", hidden: false },
+
+            { type: "build", hidden: true },
+            { type: "ci", hidden: true },
+          ],
+        },
         parserOpts: {
           noteKeywords: ["BREAKING CHANGE", "BREAKING CHANGES", "BREAKING"],
         },
-        presetConfig: {
-          header: "Testing",
-          types: [
-            { type: "feat",     section: "✨ New & Improved", hidden: false },
-            { type: "refactor", section: "✨ New & Improved", hidden: true },
-
-            { type: "style",    section: "💄 Style Refinements", hidden: false },
-
-            { type: "fix",      section: "🛠 Fixes & Updates", hidden: false },
-            { type: "perf",     section: "🛠 Fixes & Updates", hidden: false },
-            { type: "chore",    section: "🛠 Fixes & Updates", hidden: true },
-            { type: "test",     section: "🛠 Fixes & Updates", hidden: true },
-
-            { type: "docs",     section: "📘 Docs", hidden: false },
-            
-            { type: "build", hidden: true, },
-            { type: "ci",    hidden: true, },
-          ],
+        writerOpts: {
+          commitsSort: ["subject", "scope"],
+          headerPartial: `## Version {{version}}`,
         },
       },
     ],
