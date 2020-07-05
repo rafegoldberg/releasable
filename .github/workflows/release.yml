@@ -35,7 +35,7 @@ jobs:
       - name: Build release
         run: npx semantic-release --debug
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }} # publish to GitHub
+          GH_TOKEN: ${{ secrets.GITHUB_ADMIN || secrets.GITHUB_TOKEN }} # publish to GitHub
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }} # release to NPM (if configured in .releaserc)
       - name: Sync remote
         uses: ad-m/github-push-action@master
