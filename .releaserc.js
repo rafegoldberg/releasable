@@ -48,6 +48,12 @@ module.exports = {
       },
     ],
     [
+      "@semantic-release/changelog",
+      {
+        changelogTitle: "Changelog",
+      },
+    ],
+    [
       "@semantic-release/npm",
       {
         npmPublish: false,
