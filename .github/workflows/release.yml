@@ -34,7 +34,7 @@ jobs:
           CI: true
       - name: Release
         run: |
-          npx semantic-release --no-ci # --debug
+          npx semantic-release --debug --dryRun
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }} # publish to GitHub remote
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}   # release to NPM registry
