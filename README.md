@@ -1,2 +1,4 @@
-# releasable
-Semantically versioned and automatically released repository template.
+Releasable
+===
+
+A semantically versioned, auto-released template repository.
