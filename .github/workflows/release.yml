@@ -8,18 +8,15 @@ on:
 jobs:
   Dump:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        node-version: [12.x]
-    - name: GitHub
-      run: echo "$context"
-      env:
-        context: ${{ toJson(github) }}
-    - name: job
-      run: echo "$context"
-      env:
-        context: ${{ toJson(job) }}
+    steps:
+      - name: GitHub
+        run: echo "$context"
+        env:
+          context: ${{ toJson(github) }}
+      - name: job
+        run: echo "$context"
+        env:
+          context: ${{ toJson(job) }}
 
   Release:
     runs-on: ubuntu-latest
