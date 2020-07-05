@@ -96,18 +96,24 @@ module.exports = {
         },
       },
     ],
-    // "@semantic-release/npm",
+    [
+      "@semantic-release/npm",
+      {
+        npmPublish: false,
+        tarballDir: "dist",
+      },
+    ],
     [
       "@semantic-release/github",
       {
         assets: [
           {
-            path: "umd/@readme/ui.min.js",
-            label: "ReadMe UI",
+            path: "dist/**",
+            label: "Source (v${nextRelease})",
           },
           {
-            path: "umd/main.css",
-            label: "ReadMe UI CSS",
+            path: "dist/*.tgz",
+            label: "Compiled (v${nextRelease})",
           },
         ],
       },
