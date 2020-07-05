@@ -1,0 +1,51 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  Release:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [10.x]
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v1
+        with:
+          ref: master
+      - name: Git Setup
+        uses: fregante/setup-git-token@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          email: rafegoldberg@gmail.com
+      - name: Node Setup (v${{ matrix.node-version }})
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: NPM Install
+        run: |
+          npm ci
+          npm run build --if-present
+        env:
+          CI: true
+      - name: Release
+        run: |
+          npx semantic-release --no-ci # --debug
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }} # publish to GitHub remote
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}   # release to NPM registry
+      - name: Push
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
+      - name: Archive UMD Bundle
+        uses: actions/upload-artifact@v1
+        with:
+          name: umd
+          path: umd
+        continue-on-error: true
