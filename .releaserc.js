@@ -77,7 +77,7 @@ module.exports = {
       {
         assets: ["CHANGELOG.md", "package.json", "package-lock.json"],
         message:
-          "Release v${nextRelease.version}\n\n${nextRelease.notes}\n\n[SKIP CI]",
+          "Release v${nextRelease.version}\n\n${nextRelease.notes}\n<!--SKIP CI-->",
       },
     ],
   ],
