@@ -13,6 +13,11 @@ jobs:
       matrix:
         node-version: [12.x] # 10.x, 12.x, 14.x
     steps:
+      - name: DEBUG TEST
+        run: |
+          echo $BRANCH
+        env:
+          BRANCH: ${{ github.ref }}
       - name: Checkout branch.
         uses: actions/checkout@master
       - name: Setup git.
@@ -39,7 +44,7 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.head_ref }}
+          branch: ${{ github.ref }}
         continue-on-error: true
       - name: Archive the bundle.
         uses: actions/upload-artifact@v1
