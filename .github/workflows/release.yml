@@ -13,34 +13,34 @@ jobs:
       matrix:
         node-version: [12.x] # 10.x, 12.x, 14.x
     steps:
-      - name: checkout branch (${{ github.ref }})
+      - name: Checkout branch (${{ github.ref }})
         uses: actions/checkout@master
-      - name: setup git
+      - name: Configure git
         run: |
           git config user.name "Action"
           git config user.email "rafegoldberg@gmail.com"
-      - name: setup node (v${{ matrix.node-version }})
+      - name: Setup node (v${{ matrix.node-version }})
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: install
+      - name: Install packages
         run: |
           npm ci
           npm run build --if-present
         env:
           CI: true
-      - name: build release
+      - name: Build release
         run: npx semantic-release --debug
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }} # publish to GitHub
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }} # release to NPM (if configured in .releaserc)
-      - name: sync remote
+      - name: Sync remote
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
         continue-on-error: true
-      - name: save bundle
+      - name: Save bundle
         uses: actions/upload-artifact@v1
         with:
           name: Bundle
