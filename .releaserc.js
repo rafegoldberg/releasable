@@ -50,7 +50,7 @@ module.exports = {
     [
       "@semantic-release/changelog",
       {
-        changelogTitle: "Changelog",
+        changelogTitle: "Changelog\n===",
       },
     ],
     [
