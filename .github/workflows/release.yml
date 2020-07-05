@@ -1,9 +1,9 @@
 name: Release
 on:
   push:
-    branches: master
-  pull_request:
-    branches: next
+    branches: 
+      - master
+      - next
 
 jobs:
   Release:
