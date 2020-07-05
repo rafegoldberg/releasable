@@ -14,40 +14,36 @@ jobs:
       matrix:
         node-version: [12.x] # 10.x, 12.x, 14.x
     steps:
-      - name: Git Checkout
-        uses: actions/checkout@v1
-        with:
-          ref: master
-      - name: Git Setup
-        uses: fregante/setup-git-token@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          email: rafegoldberg@gmail.com
-      - name: Node Setup (v${{ matrix.node-version }})
+      - name: Setup git.
+        uses: actions/checkout@master
+        run: /
+          git config user.name "Action"
+          git config user.email "rafegoldberg@gmail.com"
+      - name: Setup node. (v${{ matrix.node-version }})
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: NPM Install
+      - name: Install package dependencies.
         run: |
           npm ci
           npm run build --if-present
         env:
           CI: true
-      - name: Release
+      - name: Build and publish a new release.
         run: |
           npx semantic-release --debug --dryRun
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }} # publish to GitHub remote
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}   # release to NPM registry
-      - name: Sync Release
+      - name: Sync release changes to remote.
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.head_ref }}
         continue-on-error: true
-      - name: Archive UMD Bundle
+      - name: Archive the bundle.
         uses: actions/upload-artifact@v1
         with:
-          name: umd
-          path: umd
+          name: Bundle
+          path: dist
         continue-on-error: true
