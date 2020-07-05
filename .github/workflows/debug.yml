@@ -10,9 +10,9 @@ jobs:
         node-version: [12.x]
     steps:
       - name: Echo current branch. (1)
-        run: echo $head
+        run: echo $BRANCH
         env:
-          head: ${{ github.head_ref }}
+          BRANCH: ${{ github.head_ref }}
       - name: Checkout branch.
         uses: actions/checkout@master
       - name: Configure git.
@@ -20,9 +20,9 @@ jobs:
           git config user.name "Action"
           git config user.email "rafegoldberg@gmail.com"
       - name: Echo current branch. (2)
-        run: echo $head
+        run: echo $BRANCH
         env:
-          head: ${{ github.head_ref }}
+          BRANCH: ${{ github.head_ref }}
       # - name: Setup node. (v${{ matrix.node-version }})
       #   uses: actions/setup-node@v1
       #   with:
