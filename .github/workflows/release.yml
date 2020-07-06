@@ -33,10 +33,10 @@ jobs:
         env:
           CI: true
       - name: Build release
-        run: npx semantic-release # --debug # --dryRun
+        run: npx semantic-release --debug --dryRun
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_ADMIN || secrets.GITHUB_TOKEN }} # publish to GitHub
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }} # release to NPM (if configured in .releaserc)
+          GH_TOKEN: ${{ secrets.GITHUB_ADMIN || secrets.GITHUB_TOKEN }} # push release to remote repo
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN || secrets.GITHUB_TOKEN }}   # publish package to registry
       - name: Sync to remote
         uses: ad-m/github-push-action@master
         with:
