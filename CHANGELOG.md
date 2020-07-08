@@ -1,6 +1,12 @@
 Changelog
 ===
 
+## Version 1.2.0-next.1
+
+### ✨ New & Improved
+
+* test ([21f3971](https://github.com/rafegoldberg/releasable/commit/21f39717572e1f782920565aa833f19c3ff726d4))
+
 ## Version 1.1.1
 
 ### 🛠 Fixes & Updates
