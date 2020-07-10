@@ -33,7 +33,7 @@ jobs:
         env:
           CI: true
       - name: Build release
-        run: npx semantic-release --debug --dryRun
+        run: npm run release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_ADMIN || secrets.GITHUB_TOKEN }} # push release to remote repo
           NPM_TOKEN: ${{ secrets.NPM_TOKEN || secrets.GITHUB_TOKEN }}   # publish package to registry
