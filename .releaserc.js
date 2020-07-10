@@ -65,7 +65,7 @@ module.exports = {
       "@semantic-release/github",
       {
         successComment:
-          '<img align="right" height="100" src="https://files.slack.com/files-pri/T03J9BEME-F017LEWC88Y/image.png?pub_secret=a18534d3e6" />\n\n## This ${issue.pull_request ? "PR" : "issue"} was ${issue.pull_request ? "released" : "resolved"}! 🚀\n\n<details open>\n<summary>Included in <b>${nextRelease.version}</b></summary><br/>\n\n- `[${releaseInfos[0].name}](${releaseInfos[0].url})`\n\n</details>',
+          '<img align="right" height="100" src="https://files.slack.com/files-pri/T03J9BEME-F017LEWC88Y/image.png?pub_secret=a18534d3e6" />\n\n## This ${issue.pull_request ? "PR" : "issue"} was ${issue.pull_request ? "released" : "resolved"}! 🚀\n\n<details open>\n<summary>Included in <b>${nextRelease.version}</b></summary><br/>\n\n- `[${releases[0].name}](${releases[0].url})`\n\n</details>',
       },
     ],
     [
