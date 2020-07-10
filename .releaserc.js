@@ -1,4 +1,5 @@
 module.exports = {
+  ci: false,
   branches: ["master", { name: "next", prerelease: true }],
   plugins: [
     [
@@ -63,6 +64,35 @@ module.exports = {
     [
       "@semantic-release/github",
       {
+        successComment: (issue, releaseInfos, nextRelease) => {
+          const linkify = (releaseInfo) =>
+            releaseInfo.url
+              ? `[${releaseInfo.name}](${releaseInfo.url})`
+              : `\`${releaseInfo.name}\``;
+
+          return `<img align="right" height="100" src="https://files.slack.com/files-pri/T03J9BEME-F017LEWC88Y/image.png?pub_secret=a18534d3e6" />
+
+          ## This ${issue.pull_request ? "PR" : "issue"} was ${
+            issue.pull_request ? "released" : "resolved"
+          }! 🚀
+          
+          <details open>
+          <summary>In <b>${nextRelease.version}</b></summary><br/>
+          
+          ${
+            releaseInfos.length > 0
+              ? `\n\nThe release is available on${
+                  releaseInfos.length === 1
+                    ? ` ${linkify(releaseInfos[0])}`
+                    : `:\n${releaseInfos
+                        .map((releaseInfo) => `- ${linkify(releaseInfo)}`)
+                        .join("\n")}`
+                }`
+              : ""
+          }
+          
+          </details>`;
+        },
         assets: [
           {
             path: "dist/**",
