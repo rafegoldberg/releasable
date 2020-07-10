@@ -1,6 +1,13 @@
 Changelog
 ===
 
+## Version 1.2.0-next.3
+
+### 🛠 Fixes & Updates
+
+* **release:** interpolate github success comment ([80aeacb](https://github.com/rafegoldberg/releasable/commit/80aeacbb0ab8386949ec3d276d9dc23e8cb02067))
+* **release:** test simple github success comment ([e7b4c58](https://github.com/rafegoldberg/releasable/commit/e7b4c585c85c6470d852fc6ae88296c530824aa8))
+
 ## Version 1.2.0-next.2
 
 ### ✨ New & Improved
