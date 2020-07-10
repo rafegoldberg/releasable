@@ -1,6 +1,12 @@
 Changelog
 ===
 
+## Version 1.2.0-next.5
+
+### ✨ New & Improved
+
+* force release ([df6e19a](https://github.com/rafegoldberg/releasable/commit/df6e19a2e636e47865d502994e7a05978538abe4))
+
 ## Version 1.2.0-next.4
 
 ### ✨ New & Improved
